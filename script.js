@@ -15,6 +15,7 @@ var questionsEl = $(".questions")
 var timer = 0;
 var i = 0;
 
+//storing questions and answers
 var questionArr = [
     {
       question: "Is JavaScript a case-sensitive language?",
@@ -116,8 +117,11 @@ var questionArr = [
     },          
   ];
 
+// start timer and quiz
 $(startBtn).click(function startFn() {
     $(startBtn).hide();
+    $("header").hide();
+    $("p").hide();
 
     timer = 75;
     timeDisplay.text("Time: " + timer);
@@ -127,8 +131,26 @@ $(startBtn).click(function startFn() {
     function intervalFn() {
         timer--
         timeDisplay.text("Time: " + timer);
+
+        if (timer === 0) {
+            clearInterval(timerInterval);
+        }
     }
 
     quizFn();
 
 });
+
+//grab a random question
+function questionRandom() {
+    i = (Math.floor(Math.random() * questionArr.length))
+    return i;
+}
+
+
+function quizFn() {
+    questionRandom();
+
+
+    questionArr[i].splice(i, 1,)
+}

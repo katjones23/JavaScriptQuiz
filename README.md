@@ -45,3 +45,4 @@ You are required to submit the following for review:
 reference:
 https://www.tutorialspoint.com/javascript/javascript_online_quiz.htm
 https://webdevtrick.com/create-javascript-quiz-program/
+https://www.sitepoint.com/simple-javascript-quiz/
