@@ -17,4 +17,11 @@ $(startBtn).click(function gameFn() {
     timer = 75;
     timeDisplay.text("Time: " + timer);
 
+    var timerInterval = setInterval(intervalFn, 1000);
+
+    function intervalFn() {
+        timer--
+        timeDisplay.text("Time: " + timer);
+    }
+
 })
