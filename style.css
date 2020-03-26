@@ -36,3 +36,12 @@ p {
     background-color: darkmagenta;
 }
 
+#btn0,
+#btn1,
+#btn2,
+#btn3 {
+    background-color: darkmagenta;
+    display: none;
+    width: 250px;
+}
+

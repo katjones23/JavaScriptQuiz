@@ -11,7 +11,9 @@
 
 var startBtn = $("#startBtn")
 var timeDisplay = $(".timer")
+var questionsEl = $(".questions")
 var timer = 0;
+var i = 0;
 
 var questionArr = [
     {
@@ -114,7 +116,7 @@ var questionArr = [
     },          
   ];
 
-$(startBtn).click(function gameFn() {
+$(startBtn).click(function startFn() {
     $(startBtn).hide();
 
     timer = 75;
@@ -127,6 +129,6 @@ $(startBtn).click(function gameFn() {
         timeDisplay.text("Time: " + timer);
     }
 
+    quizFn();
 
-
-})
+});
