@@ -1,4 +1,3 @@
-// GIVEN I am taking a code quiz
 // WHEN I click the start button
 // THEN a timer starts and I am presented with a question
 // WHEN I answer a question
@@ -11,7 +10,11 @@
 // THEN I can save my initials and score
 
 var startBtn = $("#startBtn")
+var timeDisplay = $(".timer")
+var timer = 0;
 
-$(startBtn).click(function() {
-    alert("button works")
+$(startBtn).click(function gameFn() {
+    timer = 75;
+    timeDisplay.text("Time: " + timer);
+
 })
