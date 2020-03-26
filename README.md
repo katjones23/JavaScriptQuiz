@@ -40,3 +40,7 @@ You are required to submit the following for review:
 
 - - -
 © 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+
+
+reference: https://www.sitepoint.com/simple-javascript-quiz/
+https://www.tutorialspoint.com/javascript/javascript_online_quiz.htm
