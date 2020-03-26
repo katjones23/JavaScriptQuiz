@@ -1,3 +1,26 @@
+body {
+    background: #eeeeee;
+}
+
+.highScoreLink {
+    color: darkmagenta;
+    text-decoration: underline;
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-size: 18px;
+    padding-left: 1%;
+}
+
+.timer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    font-size: 18px;
+    font-weight: bold;
+    padding-right: 1%;
+}
+
 h1 {
     font-size: 50px;
     font-weight: bolder;
