@@ -27,7 +27,7 @@ var questionArr = [
       answers: {
         a: "JavaScript can manipulate cookies using the cookie property of the Document object.",
         b: "JavaScript can read, create, modify, and delete the cookie or cookies that apply to the current web page.",
-        c: "Both of the above."
+        c: "Both of the above.",
         d: "None of the above."
       },
       correctAnswer: "c"
@@ -41,7 +41,7 @@ var questionArr = [
         d: "None of the above."
       },
       correctAnswer: "c"
-    }
+    },
     {
         question: "Which built-in method returns the calling string value converted to upper case?",
         answers: {
@@ -51,7 +51,7 @@ var questionArr = [
           d: "None of the above."
         },
         correctAnswer: "a"
-    }
+    },
     {
         question: "Which of the following function of Boolean object returns a string containing the source of the Boolean object?",
         answers: {
@@ -61,7 +61,7 @@ var questionArr = [
           d: "None of the above."
     },
         correctAnswer: "a"
-    }
+    },
     {
         question: "Which of the following function of String object extracts a section of a string and returns a new string?",
         answers: {
@@ -71,7 +71,7 @@ var questionArr = [
           d: "search()"
         },
         correctAnswer: "a"
-    }
+    },
     {
         question: "Which of the following function of String object creates an HTML anchor that is used as a hypertext target?",
         answers: {
@@ -81,7 +81,7 @@ var questionArr = [
           d: "big()"
     },
         correctAnswer: "a"
-    }
+    },
     {
         question: "Which of the following function of String object causes a string to be displayed as struck-out text, as if it were in a <strike> tag?",
         answers: {
@@ -91,7 +91,7 @@ var questionArr = [
           d: "sub()"
     },
         correctAnswer: "c"
-    }
+    },
     {
         question: "Which of the following function of Array object joins all elements of an array into a string?",
         answers: {
@@ -101,7 +101,7 @@ var questionArr = [
           d: "map()"
     },
         correctAnswer: "b"
-    }
+    },
     {
         question: "Which of the following function of Array object removes the first element from an array and returns that element?",
         answers: {
@@ -111,10 +111,12 @@ var questionArr = [
           d: "some()"
     },
         correctAnswer: "b"
-    }            
+    },          
   ];
 
 $(startBtn).click(function gameFn() {
+    $(startBtn).hide();
+
     timer = 75;
     timeDisplay.text("Time: " + timer);
 
@@ -124,5 +126,7 @@ $(startBtn).click(function gameFn() {
         timer--
         timeDisplay.text("Time: " + timer);
     }
+
+
 
 })
