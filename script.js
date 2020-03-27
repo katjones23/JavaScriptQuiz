@@ -1,8 +1,3 @@
-// WHEN I answer a question
-// THEN I am presented with another question
-// WHEN all questions are answered or the timer reaches 0
-// THEN the game is over
-
 var startBtn = $("#startBtn");
 var timeDisplay = $(".timer");
 var header = $(".header");
@@ -128,7 +123,7 @@ $(startBtn).click(function startFn() {
     timer = 75;
     timeDisplay.text("Time: " + timer);
 
-    var timerInterval = setInterval(intervalFn, 1000);
+    timerInterval = setInterval(intervalFn, 1000);
 
     function intervalFn() {
         timer--;
@@ -143,9 +138,10 @@ $(startBtn).click(function startFn() {
                 .css("display", "block")
             highscore();
         };
+        return timerInterval;
     };
 
-    // shuffleArray(questionArr);
+    shuffleArray(questionArr);
     quizFn();
 
 });
@@ -156,14 +152,14 @@ $(startBtn).click(function startFn() {
 //     return i;
 // };
 
-// Durstenfeld shuffle to shuffle array
-// function shuffleArray(array) {
-//     for (let i = array.length - 1; i > 0; i--) {
-//         var j = Math.floor(Math.random() * (i + 1));
-//         [array[i], array[j]] = [array[j], array[i]];
-//     }
-//     return array;
-// }
+// Durstenfeld shuffle to shuffle array via stackoverflow
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
 
 
 function quizFn() {
@@ -219,15 +215,22 @@ $(".answerBtn").click(function userChoice(event) {
         timer = timer + 10;
     } else {
         $(result).text("Wrong!");
-        if (timer > 10) {
-            timer = timer - 10;
+        if (timer < 11) {
+            clearInterval(timerInterval);
+            $(header).text("Game over!")
+            $("p").text("Your score: " + timer)
+                .css("display", "block")
+            $(questionsEl).hide();
+            $(result).hide();
+            highscore();
+            return;
         } else {
-            timer = 0;
+            timer = timer - 10;
         }
         
     };
 
-    setTimeout(nextQuestion, 2000);
+    setTimeout(nextQuestion, 1000);
 });
 
 function nextQuestion() {
