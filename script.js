@@ -147,7 +147,6 @@ $(startBtn).click(function startFn() {
 
     // shuffleArray(questionArr);
     quizFn();
-    console.log(questionArr.length)
 
 });
 
@@ -169,7 +168,7 @@ $(startBtn).click(function startFn() {
 
 function quizFn() {
 
-        if (timer === 0 || i >= questionArr.length) {
+        if (i >= questionArr.length) {
             clearInterval(timerInterval);
             $(header).text("Game over!")
             $("p").text("Your score: " + timer)
@@ -178,13 +177,11 @@ function quizFn() {
             $(result).hide();
             highscore();
         } else {
-            console.log(i)
         var question = questionArr[i].question;
         var answerA = questionArr[i].answers.a
         var answerB = questionArr[i].answers.b
         var answerC = questionArr[i].answers.c
         var answerD = questionArr[i].answers.d
-        var correctAnswer = questionArr[i].correctAnswer
 
         //add text of question to div
         $(header).text(question);
@@ -206,26 +203,39 @@ function quizFn() {
         $(choiced).text("d. " + answerD);
         $("#btn3").attr("data-answer", "d");
         $("#btn3").css("display", "block");
-    
-        $(".btn").click(function userChoice() {
-            var userPick = $(this).attr("data-answer");
-    
-            if (userPick === correctAnswer) {
-                $(result).text("Correct!");
-                console.log(timer)
-                timer = timer + 10;
-                console.log(timer)  
-            } else {
-                $(result).text("Wrong!");
-                console.log(timer)
-                timer = timer - 10;
-                console.log(timer)  
-            };
-
-            return;
-        })
+        
+        return;
     }
 }
+
+$(".answerBtn").click(function userChoice(event) {
+
+    event.stopPropagation();
+    var correctAnswer = questionArr[i].correctAnswer
+    var userPick = $(this).attr("data-answer");
+
+    if (userPick === correctAnswer) {
+        $(result).text("Correct!");
+        timer = timer + 10;
+    } else {
+        $(result).text("Wrong!");
+        if (timer > 10) {
+            timer = timer - 10;
+        } else {
+            timer = 0;
+        }
+        
+    };
+
+    setTimeout(nextQuestion, 2000);
+});
+
+function nextQuestion() {
+    i++
+    console.log(i);
+    $(result).text("");
+    quizFn();
+};
 
 var highscores = [];
 

@@ -63,3 +63,7 @@ p {
 .enterScore {
     display: none;
 }
+
+li {
+    padding: 5px;
+}
