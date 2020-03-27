@@ -42,7 +42,11 @@ p {
 #btn3 {
     background-color: darkmagenta;
     display: none;
-    width: 250px;
-    padding: 10px;
     margin: 10px; 
+    box-sizing: content-box;
+}
+
+.result {
+    float: right;
+    font-size: 25px;
 }

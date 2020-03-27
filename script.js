@@ -1,5 +1,3 @@
-// WHEN I click the start button
-// THEN a timer starts and I am presented with a question
 // WHEN I answer a question
 // THEN I am presented with another question
 // WHEN I answer a question incorrectly
@@ -17,6 +15,8 @@ var choicea = $("#choicea");
 var choiceb = $("#choiceb");
 var choicec = $("#choicec");
 var choiced = $("#choiced");
+var result = $(".result");
+
 var timer = 0;
 var i = 0;
 
@@ -133,13 +133,13 @@ $(startBtn).click(function startFn() {
     var timerInterval = setInterval(intervalFn, 1000);
 
     function intervalFn() {
-        timer--
+        timer--;
         timeDisplay.text("Time: " + timer);
 
         if (timer === 0) {
             clearInterval(timerInterval);
-        }
-    }
+        };
+    };
 
     quizFn();
 
@@ -147,9 +147,9 @@ $(startBtn).click(function startFn() {
 
 //grab index of question randomly
 function questionRandom() {
-    i = (Math.floor(Math.random() * questionArr.length))
+    i = (Math.floor(Math.random() * questionArr.length));
     return i;
-}
+};
 
 
 function quizFn() {
@@ -157,26 +157,39 @@ function quizFn() {
 
     //add text of question to div
     $(header).text(questionArr[i].question);
-    $(header).css("font-size", "30px")
+    $(header).css("font-size", "30px");
 
     //add text to buttons if that question has that answer choice
     if (questionArr[i].answers.a !== null) {
-        $(choicea).text("a. " + questionArr[i].answers.a)
-        $("#btn0").css("display", "block")
-    }
+        $(choicea).text("a. " + questionArr[i].answers.a);
+        $("#btn0").attr("data-answer", "a");
+        $("#btn0").css("display", "block");
+    };
     if (questionArr[i].answers.b !== null) {
-        $(choiceb).text("b. " + questionArr[i].answers.b)
-        $("#btn1").css("display", "block")
-    }
+        $(choiceb).text("b. " + questionArr[i].answers.b);
+        $("#btn1").attr("data-answer", "b");
+        $("#btn1").css("display", "block");
+    };
     if (questionArr[i].answers.c !== null) {
-        $(choicec).text("c. " + questionArr[i].answers.c)
-        $("#btn2").css("display", "block")
-    }
+        $(choicec).text("c. " + questionArr[i].answers.c);
+        $("#btn2").attr("data-answer", "c");
+        $("#btn2").css("display", "block");
+    };
     if (questionArr[i].answers.d !== null) {
-        $(choiced).text("d. " + questionArr[i].answers.d)
-        $("#btn3").css("display", "block")
-    }
+        $(choiced).text("d. " + questionArr[i].answers.d);
+        $("#btn3").attr("data-answer", "d");
+        $("#btn3").css("display", "block");
+    };
 
+    $(".btn").click(function userChoice() {
+        var userPick = $(this).attr("data-answer");
+
+        if (userPick === questionArr[i].correctAnswer) {
+            $(result).text("Correct!");
+        } else {
+            $(result).text("Wrong!");
+        };
+    })
 
     questionArr[i].splice(i, 1,)
 }
