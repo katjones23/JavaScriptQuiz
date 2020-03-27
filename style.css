@@ -32,8 +32,11 @@ p {
     padding-bottom: 50px;
 }
 
-#startBtn {
+#startBtn,
+#back,
+#clear {
     background-color: darkmagenta;
+    margin: 10px;
 }
 
 #btn0,
@@ -49,4 +52,10 @@ p {
 .result {
     float: right;
     font-size: 25px;
+}
+
+.initialsLabel,
+.inputBox,
+.hsBtn {
+    margin: 5px;
 }
