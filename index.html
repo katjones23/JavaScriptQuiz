@@ -19,7 +19,7 @@
         <div class="highScore">
             <a href="#" class="highScoreLink">View Highscores</a>
         </div>
-    
+
         <div class="timer">
             Time: 0
         </div>
@@ -27,19 +27,23 @@
         <div class="row">
             <div class="col-md text-center">
                 <header>
-                    <h1>JavaScript Quiz</h1>
+                    <h1 class="header">JavaScript Quiz</h1>
                 </header>
                 <main>
-                    <p>This quiz is meant to test you on your coding knowledge.  Your score is how much time is left.  Correct answers will add to your time.  
-                        Incorrect answers will take away from your time, and enough will end the game.  Good luck!
+                    <p>This quiz is meant to test you on your coding knowledge. Your score is how much time is left.
+                        Correct answers will add to your time.
+                        Incorrect answers will take away from your time, and enough will end the game. Good luck!
                         <br>
                         <small>Questions courtesy of tutorialspoint.com</small>
                     </p>
                     <section class="questions">
-                        <button id="btn0" class="btn btn-secondary btn-lg"><span id="choicea"></span></button>
-                        <button id="btn1" class="btn btn-secondary btn-lg"><span id="choiceb"></span></button>
-                        <button id="btn2" class="btn btn-secondary btn-lg"><span id="choicec"></span></button>
-                        <button id="btn3" class="btn btn-secondary btn-lg"><span id="choiced"></span></button>
+                        <div class="col-md-8 justify-content-center">
+                            <button id="btn0" class="btn btn-secondary btn-lg"><span id="choicea"></span></button>
+                            <button id="btn1" class="btn btn-secondary btn-lg"><span id="choiceb"></span></button>
+                            <button id="btn2" class="btn btn-secondary btn-lg"><span id="choicec"></span></button>
+                            <button id="btn3" class="btn btn-secondary btn-lg"><span id="choiced"></span></button>
+                            <div class="result"></div>
+                        </div>
                     </section>
                 </main>
             </div>
@@ -47,11 +51,11 @@
         <div class="row">
             <div class="col-md text-center">
                 <div class="start">
-                    <button type="button" id = "startBtn" class="btn btn-secondary btn-lg">Start Quiz</button>
+                    <button type="button" id="startBtn" class="btn btn-secondary btn-lg">Start Quiz</button>
                 </div>
             </div>
         </div>
-        
+
     </div>
 
 
@@ -73,7 +77,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-    
+
     <script src="script.js"></script>
 </body>
 

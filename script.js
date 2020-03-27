@@ -9,9 +9,14 @@
 // WHEN the game is over
 // THEN I can save my initials and score
 
-var startBtn = $("#startBtn")
-var timeDisplay = $(".timer")
-var questionsEl = $(".questions")
+var startBtn = $("#startBtn");
+var timeDisplay = $(".timer");
+var header = $(".header");
+var questionsEl = $(".questions");
+var choicea = $("#choicea");
+var choiceb = $("#choiceb");
+var choicec = $("#choicec");
+var choiced = $("#choiced");
 var timer = 0;
 var i = 0;
 
@@ -120,7 +125,6 @@ var questionArr = [
 // start timer and quiz
 $(startBtn).click(function startFn() {
     $(startBtn).hide();
-    $("header").hide();
     $("p").hide();
 
     timer = 75;
@@ -141,7 +145,7 @@ $(startBtn).click(function startFn() {
 
 });
 
-//grab a random question
+//grab index of question randomly
 function questionRandom() {
     i = (Math.floor(Math.random() * questionArr.length))
     return i;
@@ -151,6 +155,34 @@ function questionRandom() {
 function quizFn() {
     questionRandom();
 
+    //add text of question to div
+    $(header).text(questionArr[i].question);
+    $(header).css("font-size", "30px")
+
+    //add text to buttons if that question has that answer choice
+    if (questionArr[i].answers.a !== null) {
+        $(choicea).text("a. " + questionArr[i].answers.a)
+        $("#btn0").css("display", "block")
+    }
+    if (questionArr[i].answers.b !== null) {
+        $(choiceb).text("b. " + questionArr[i].answers.b)
+        $("#btn1").css("display", "block")
+    }
+    if (questionArr[i].answers.c !== null) {
+        $(choicec).text("c. " + questionArr[i].answers.c)
+        $("#btn2").css("display", "block")
+    }
+    if (questionArr[i].answers.d !== null) {
+        $(choiced).text("d. " + questionArr[i].answers.d)
+        $("#btn3").css("display", "block")
+    }
+
 
     questionArr[i].splice(i, 1,)
 }
+
+// answers: {
+//     a: "Yes",
+//     b: "No",
+//   },
+//   correctAnswer: "a"
