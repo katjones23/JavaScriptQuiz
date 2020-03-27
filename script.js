@@ -139,12 +139,19 @@ $(startBtn).click(function startFn() {
         timeDisplay.text("Time: " + timer);
 
         if (timer === 0) {
+            $(header).text("Game over!")
+            $(questionsEl).hide();
+            $(result).hide();
+            $("p").text("Your score: " + timer)
+                .css("display", "block")
+            highscore();
             clearInterval(timerInterval);
         };
     };
 
     // shuffleArray(questionArr);
     quizFn();
+    console.log(questionArr.length)
 
 });
 
@@ -166,37 +173,64 @@ $(startBtn).click(function startFn() {
 
 function quizFn() {
 
-    for (i = 0; i < questionArr.length; i++) {
+        if (timer === 0 || i >= questionArr.length) {
+            $(header).text("Game over!")
+            $("p").text("Your score: " + timer)
+                .css("display", "block")
+            $(questionsEl).hide();
+            $(result).hide();
+            highscore();
+        } else {
+            console.log(i)
+        var question = questionArr[i].question;
+        var answerA = questionArr[i].answers.a
+        var answerB = questionArr[i].answers.b
+        var answerC = questionArr[i].answers.c
+        var answerD = questionArr[i].answers.d
+        var correctAnswer = questionArr[i].correctAnswer
+
         //add text of question to div
-        $(header).text(questionArr[i].question);
+        $(header).text(question);
         $(header).css("font-size", "30px");
     
         //add text to buttons
-        $(choicea).text("a. " + questionArr[i].answers.a);
+        $(choicea).text("a. " + answerA);
         $("#btn0").attr("data-answer", "a");
         $("#btn0").css("display", "block");
     
-        $(choiceb).text("b. " + questionArr[i].answers.b);
+        $(choiceb).text("b. " + answerB);
         $("#btn1").attr("data-answer", "b");
         $("#btn1").css("display", "block");
     
-        $(choicec).text("c. " + questionArr[i].answers.c);
+        $(choicec).text("c. " + answerC);
         $("#btn2").attr("data-answer", "c");
         $("#btn2").css("display", "block");
     
-        $(choiced).text("d. " + questionArr[i].answers.d);
+        $(choiced).text("d. " + answerD);
         $("#btn3").attr("data-answer", "d");
         $("#btn3").css("display", "block");
     
         $(".btn").click(function userChoice() {
             var userPick = $(this).attr("data-answer");
     
-            if (userPick === questionArr[i].correctAnswer) {
+            if (userPick === correctAnswer) {
                 $(result).text("Correct!");
+                console.log(timer)
+                timer = timer + 10;
+                console.log(timer)  
             } else {
                 $(result).text("Wrong!");
+                console.log(timer)
+                timer = timer - 10;
+                console.log(timer)  
             };
+
+            return;
         })
     }
+}
+
+function highscore() {
+
 }
 
