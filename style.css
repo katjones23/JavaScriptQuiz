@@ -59,3 +59,7 @@ p {
 .hsBtn {
     margin: 5px;
 }
+
+.enterScore {
+    display: none;
+}

@@ -1,11 +1,7 @@
 // WHEN I answer a question
 // THEN I am presented with another question
-// WHEN I answer a question incorrectly
-// THEN time is subtracted from the clock
 // WHEN all questions are answered or the timer reaches 0
 // THEN the game is over
-// WHEN the game is over
-// THEN I can save my initials and score
 
 var startBtn = $("#startBtn");
 var timeDisplay = $(".timer");
@@ -139,13 +135,13 @@ $(startBtn).click(function startFn() {
         timeDisplay.text("Time: " + timer);
 
         if (timer === 0) {
+            clearInterval(timerInterval);
             $(header).text("Game over!")
             $(questionsEl).hide();
             $(result).hide();
             $("p").text("Your score: " + timer)
                 .css("display", "block")
             highscore();
-            clearInterval(timerInterval);
         };
     };
 
@@ -174,6 +170,7 @@ $(startBtn).click(function startFn() {
 function quizFn() {
 
         if (timer === 0 || i >= questionArr.length) {
+            clearInterval(timerInterval);
             $(header).text("Game over!")
             $("p").text("Your score: " + timer)
                 .css("display", "block")
@@ -230,7 +227,68 @@ function quizFn() {
     }
 }
 
-function highscore() {
+var highscores = [];
 
+//based off todos activity
+function highscore() {
+    $(".enterScore").css("display", "block");
+
+    function storeHs() {
+        localStorage.setItem("highscores", JSON.stringify(highscores));
+    }
+
+    $(".hsBtn").click(function submitScore(event) {
+        event.preventDefault();
+
+        var score = timer;
+        var initials = $("input:text").val();
+
+        var scoreInitials = (initials + " " + score);
+
+        highscores.push(scoreInitials);
+        initials = "";
+
+        storeHs();
+
+        location.href = "./highscore.html";
+    })
 }
 
+
+var hsInput = $("#initials");
+var hsList = $(".listHS");
+
+init();
+
+
+function renderHs() {
+    $(hsList).html("");
+
+    for (var k = 0; k < highscores.length; k++) {
+        var highscore = highscores[k];
+
+        var li = $("<li>");
+        
+        $(li).text(highscore);
+        $(li).attr("data-index", k);
+        
+        $(hsList).append(li);
+    }
+}
+
+
+function init() {
+    var storedHs = JSON.parse(localStorage.getItem("highscores"));
+
+    if (storedHs !== null) {
+        highscores = storedHs;
+    }
+
+    renderHs();
+}
+
+$("#clear").click(function clearStorage() {
+    localStorage.clear();
+
+    $(hsList).html("");
+})
