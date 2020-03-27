@@ -281,9 +281,11 @@ function renderHs() {
         var highscore = highscores[k];
 
         var li = $("<li>");
+        var itemNumber = k+1
         
-        $(li).text(highscore);
+        $(li).text(itemNumber + ". " + highscore);
         $(li).attr("data-index", k);
+        $(li).addClass("list-group-item");
         
         $(hsList).append(li);
     }
