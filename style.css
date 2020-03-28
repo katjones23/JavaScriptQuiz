@@ -74,4 +74,5 @@ p {
     width: 500px;
     background-color: darkmagenta;
     color: white;
+    box-sizing: content-box;
 }
