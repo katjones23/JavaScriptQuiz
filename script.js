@@ -146,12 +146,6 @@ $(startBtn).click(function startFn() {
 
 });
 
-//grab index of question randomly
-// function questionRandom() {
-//     i = (Math.floor(Math.random() * questionArr.length));
-//     return i;
-// };
-
 // Durstenfeld shuffle to shuffle array via stackoverflow
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -235,7 +229,6 @@ $(".answerBtn").click(function userChoice(event) {
 
 function nextQuestion() {
     i++
-    console.log(i);
     $(result).text("");
     quizFn();
 };
