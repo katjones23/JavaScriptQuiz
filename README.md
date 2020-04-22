@@ -2,6 +2,8 @@
 
 ## Description 
 
+[Deployed link](https://katjones23.github.io/JavaScriptQuiz/)
+
 A short quiz of multiple choice questions to test your JavaScript knowledge.
 
 ## Credits
